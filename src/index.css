@@ -2,3 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: IRRegular;
+  src: url("./assets/fonts/IRANYekanXFaNum-Regular.woff");
+}
+
+@font-face {
+  font-family: IRBold;
+  src: url("./assets/fonts/IRANYekanXFaNum-Bold.woff");
+}
+
+@layer base {
+  body {
+    @apply w-screen h-screen overflow-hidden text-base font-irregular bg-slate-50 text-slate-900;
+  }
+
+  #root {
+    @apply h-full overflow-y-auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-irbold;
+  }
+
+  h1 {
+    @apply text-5xl;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-3xl;
+  }
+  h4 {
+    @apply text-2xl;
+  }
+  h5 {
+    @apply text-xl;
+  }
+  h6 {
+    @apply text-lg;
+  }
+  p {
+    @apply text-base font-irregular;
+  }
+}
+
+@layer utilities {
+  .animate-pause {
+    animation-play-state: paused;
+  }
+}
