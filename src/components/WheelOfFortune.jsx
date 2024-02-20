@@ -60,9 +60,7 @@ function WheelOfFortune() {
   };
 
   // Utility functions
-  const randomNumber = (min, max) => {
-    return Math.random() * max + min;
-  };
+  const randomNumber = (min, max) => Math.random() * (max - min) + min;
 
   // Event handlers
   const handleStopButton = () => {
