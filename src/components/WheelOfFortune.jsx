@@ -16,19 +16,24 @@ const slices = [
   { color: twColors.orange[saturation], text: "Code 6" },
 ];
 
+// States default values
+const formStateDefaultValues = {
+  minTime: 5000,
+  maxTime: 15000,
+};
+
+const errorsStateDefaultValues = {
+  minTime: "",
+  maxTime: "",
+};
+
 function WheelOfFortune() {
   // Spinner state
   const [spinStatus, setSpinStatus] = useState("stop");
 
   // Form states
-  const [form, setForm] = useState({
-    minTime: 5000,
-    maxTime: 15000,
-  });
-  const [errors, setErrors] = useState({
-    minTime: "",
-    maxTime: "",
-  });
+  const [form, setForm] = useState(formStateDefaultValues);
+  const [errors, setErrors] = useState(errorsStateDefaultValues);
 
   // Form functions
   const controlInput = (name) => ({
@@ -61,8 +66,8 @@ function WheelOfFortune() {
 
   // Event handlers
   const handleStopButton = () => {
-    setForm({ minTime: 0, maxTime: 0 });
-    setErrors({ minTime: "", maxTime: "" });
+    setForm(formStateDefaultValues);
+    setErrors(errorsStateDefaultValues);
     setSpinStatus("stop");
   };
 
@@ -98,8 +103,14 @@ function WheelOfFortune() {
           helperText={errors.maxTime}
         />
         <div className="flex [&>button]:flex-[100%] md:[&>button]:flex-1 flex-wrap gap-2 w-full">
-          <Button type="submit">شروع</Button>
-          <Button onClick={handleStopButton} variant="outline">
+          <Button type="submit" disabled={spinStatus === "spin"}>
+            شروع
+          </Button>
+          <Button
+            onClick={handleStopButton}
+            variant="outline"
+            disabled={spinStatus === "stop"}
+          >
             توقف و شروع مجدد
           </Button>
         </div>
